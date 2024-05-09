@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<head>
+	<title>Add department</title>
+	<style>
+		*{
+			margin:0;
+			padding:0;
+			font-family:'Franklin Gothic Medium';
+		}
+		body{
+			background-color: rgb(179, 230, 235);
+		}
+		h1{
+			color: rgb(14, 42, 73);
+			font-size: 50px;	
+			border: 2px solid white;
+			border-radius: 10px;
+			border-radius: 10px;
+			padding: 10px 10px;
+			margin: 20px 40px;
+			background-color: aliceblue;
+		}
+	
+		h1:hover{
+			text-shadow: 3px 3px 2px;
+			background-color: rgb(209, 217, 224);
+		}
+		.updatedept{
+			padding: 20px 10px;
+			border: 1px solid black;
+			border-radius: 7px;
+			background-color: aliceblue;
+		}
+		table{
+			font-size: 25px;
+		}
+		table input{
+			font-size: 25px;
+			width: 320px;
+		}
+		select{
+			border: 1 px solid black;
+			width: 150px;
+			height: 40px;
+			border-radius: 3px;
+		}
+		option{
+			height: 150px;
+		}
+		.btn{
+			border: none;
+			border-radius: 6px;
+			padding: 15px;
+			font-size: 30px;
+			background-color: #fffafa;
+			color: black;
+			cursor: pointer;
+	
+		}
+		.btn:hover{
+			background-color: #e7e7e7;
+		}
+		.btn1{
+			border: none;
+			border-radius: 6px;
+			padding: 15px;
+			font-size: 30px;
+			background-color: #fffafa;
+			color: black;
+			cursor: pointer;
+			text-decoration: none;
+	
+		}
+		.btn1:hover{
+			background: #e7e7e7;
+		}
+		h2{
+			font-size: 25px;
+		}
+		footer{
+			margin-top: 50px;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			font-size: 30px;
+		}
+	</style>
+</head>
+<body>
+<center>
+	<h1> Update Student Page </h1>
+	<form action="" method="post">
+		{% csrf_token %}
+		<table class="updatedept">
+			{{ fm.as_table }}
+		</table>
+		<br>
+		<input class="btn" type="submit" value="Update">
+		<a class="btn1" href="{% url  'showstudent'  %}">Back</a>
+	</form>
+	<br>
+	<h2>{{ msg }}</h2>
+</center>
+</body>
+<footer>Rohit Baikar-05550224</footer>
+{% endblock %}
+

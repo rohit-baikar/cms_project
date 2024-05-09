@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<head>
+	<title>Add department</title>
+</head>
+<style>
+	*{
+		margin:0;
+		padding:0;
+		font-family:'Franklin Gothic Medium';
+	}
+	body{
+		background-color: rgb(179, 230, 235);
+	}
+	h1{
+		color: rgb(14, 42, 73);
+		font-size: 50px;	
+		border: 2px solid white;
+		border-radius: 10px;
+		border-radius: 10px;
+		padding: 10px 10px;
+		margin: 20px 40px;
+		background-color: aliceblue;
+	}
+
+	h1:hover{
+		text-shadow: 3px 3px 2px;
+		background-color: rgb(209, 217, 224);
+	}
+	.adddept{
+		padding: 30px 10px;
+		border: 1px solid black;
+		border-radius: 7px;
+		background-color: aliceblue;
+	}
+	table{
+		font-size: 30px;
+	}
+	table input{
+		font-size: 30px;
+	}
+	.btn{
+		border: none;
+		border-radius: 6px;
+		padding: 15px;
+		font-size: 30px;
+		border-color: #e7e7e7;
+		color: black;
+		cursor: pointer;
+
+	}
+	.btn:hover{
+		background: #e7e7e7;
+	}
+	h2{
+		font-size: 25px;
+	}
+	footer{
+		margin-top: 50px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 30px;
+	}
+</style>
+<body>
+<center>
+	<h1> Add Department Page </h1>
+	<form method="POST">
+	{% csrf_token %}
+	<div>
+		<table class="adddept">
+			{{ fm.as_table }}
+		</table>
+		<br><br>	
+		<input class="btn" type="submit" value="Create Department" />
+	</form>
+	<br><br>
+	<h2> {{  msg  }} </h2>
+</div>
+</center>
+</body>
+<footer>Rohit Baikar-05550224</footer>
+{% endblock %}

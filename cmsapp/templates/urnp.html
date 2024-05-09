@@ -1,0 +1,79 @@
+{% extends  'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+	*{
+	font-family:'Franklin Gothic Medium';	
+	}
+	body{
+		background-image:url("{% static  'image.jpg'%}");
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-size: cover;
+		background-size: 100% 100%;
+	}
+	.login{
+		width: 25%;
+		margin: 70px auto;
+		padding: 30px;
+		background-color: #fff;
+		border-radius: 10px;
+		text-align: center;
+		box-shadow: 0 20px 35px rgba(0, 0,0,0.5);
+	}
+	h1{
+		font-size: 30px;
+		color: #07001f;
+		margin-top: 30px;
+	}
+	.email{
+		width: 90%;
+		padding: 15px 15px;
+		margin: 30px 0;
+		outline: none;
+		border: 1px solid #fff;
+		border-radius: 20px;
+		background: #e4e4e4;
+		font-size: 20px;
+	}
+	.email{
+		border: 1px solid rgb(192, 192, 192);
+	}
+	.btnsubmit{
+		font-size: 25px;
+		margin-top: 20px;
+		padding: 15px;
+		border-radius: 20px;
+		outline: none;
+		border: none;
+		width: 70%;
+		color: #fff;
+		cursor: pointer;
+		background: rgb(17, 107, 143);	
+	} 
+	.btnsubmit:hover{
+		background: rgba(17, 107, 143, 0.877);
+	}
+	h2{
+		margin-top: 30px;
+	}
+	footer{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 30px;
+	}
+
+</style>
+	<div class="login">
+		<h1>Reset New password</h1>
+		<form action="#" method="post">
+		{% csrf_token %}
+		<input class="email" type="email" name="un" id="id_un", placeholder="Enter Email" required>
+		<input class="btnsubmit" type="submit" value="Set New Password">	
+		</form>
+		<h2>we will email you your new password</h2>
+		<h2 id="id_msg">{{ msg }}</h2>
+	</div>
+	<footer>Rohit Baikar-05550224</footer>
+{% endblock %}

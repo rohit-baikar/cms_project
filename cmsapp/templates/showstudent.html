@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<head>
+<title>show students</title>
+<style>
+	*{
+		margin:0;
+		padding:0;
+		font-family:'Franklin Gothic Medium';
+	}
+	body{
+		background-color: rgb(179, 230, 235);
+	}
+	h1{
+		color: rgb(14, 42, 73);
+		font-size: 50px;	
+		border: 2px solid white;
+		border-radius: 10px;
+		border-radius: 10px;
+		padding: 10px 10px;
+		margin: 20px 40px;
+		background-color: aliceblue;
+	}
+
+	h1:hover{
+		text-shadow: 3px 3px 2px;
+		background-color: rgb(209, 217, 224);
+	}
+	.addstd{
+		border-color: #2196F3;
+		color: dodgerblue;
+		text-decoration: none;
+		cursor: pointer;
+		font-size: 30px;
+		border: none;
+		border-radius: 10px;
+		background-color: white;
+		padding: 10px 10px;
+	}
+	.addstd:hover{
+		background: #2196F3;
+		color: white;
+	}
+	.stdtable{
+		border: 1px solid black;
+		border-radius: 10px;
+	}
+	.tr{
+		font-size: 35px;
+		background-color: aliceblue;
+	}
+	td{
+		font-size: 25px;
+		background-color: aliceblue;
+	}
+	footer{
+		margin-top: 50px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		font-size: 30px;
+	}
+	.update{
+		border: none;
+		border-radius: 5px;
+		color: rgb(247, 170, 3);
+		padding: 2px;
+		margin: 14px;
+		text-decoration: none;
+	}
+	.update:hover{
+		color:dodgerblue
+	}
+	.update1{
+		border: none;
+		border-radius: 5px;
+		color: red;
+		padding: 2px;
+		margin: 14px;
+		text-decoration: none;
+	}
+	.update1:hover{
+		color:dodgerblue
+	}
+</style>
+</head>
+
+
+<body>
+<center>
+	<h1> Student Page </h1>
+	<br>
+	<a class="addstd" href = "{%  url   'addstudent'  %}"> Add Student </a>
+	<br><br>
+	
+	<table class="stdtable" style="width:70%">
+		<tr class="tr">
+			<th> Rno </th>
+			<th> Name </th>
+			<th> Dept </th>
+			<th> Marks </th>
+			<th> Email </th>
+			<th> ViewFile </th>
+			<th> Update </th>
+			<th> Delete </th>
+		</tr>
+		{% for d in data %}
+		<tr style="text-align:center;">
+			<td> {{ d.rno }} </td>
+			<td> {{ d.name }} </td>
+			<td> {{ d.dept }} </td>
+			<td> {{ d.marks }} </td>
+			<td> {{ d.email }} </td>
+			<td><a href={{ d.ms.url }} style="text-decoration:none;"> View </a></td>
+
+			<td> <a class="update" href="{% url 'updatestudent'  id=d.rno  %}"> Update</a></td>
+			
+			<td> <a class="update1" href="{%  url   'removestudent'  id=d.rno %}" 
+			onclick="return confirm('are you sure??')"> Delete </a></td>
+		</tr>
+		{% empty %}
+		<tr style="text-align:center;">
+			<td colspan=6> No Records Found </td>
+		</tr>
+		{% endfor %}
+	</table>
+</center>
+</body>
+<footer>Rohit Baikar-05550224</footer>
+{% endblock %}
